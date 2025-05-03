@@ -25,7 +25,7 @@ various positioning strategies to help you create responsive game interfaces wit
 
 ` npm install excalibur-ui-layout`
 
-## Basic Usage typescript
+## Basic Usage
 
 ```ts
 import { Engine } from "excalibur";
