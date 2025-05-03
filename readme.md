@@ -19,6 +19,8 @@ various positioning strategies to help you create responsive game interfaces wit
 
 ## Installation
 
+> This **_HAS NOT_** BEEN IMPLEMENTED YET
+
 `bash`
 
 ` npm install excalibur-ui-layout`
