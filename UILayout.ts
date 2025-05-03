@@ -157,6 +157,13 @@ export class UIContainer extends ScreenElement {
     return this._padding;
   }
 
+  registerUIEvents(events: EventEmitter) {
+    this.uiEvents = events;
+    for (const child of this._childrenContainers) {
+      child.registerUIEvents(events);
+    }
+  }
+
   getDimension(): Vector {
     return vec(this.graphics.localBounds.width, this.graphics.localBounds.height);
   }
@@ -174,8 +181,10 @@ export class UIContainer extends ScreenElement {
     super.addChild(child);
     this._childrenContainers.push(child);
     child._parentContainer = this;
-    child.uiEvents = this.uiEvents;
-    this.uiEvents!.emit("setDirty", new UILayoutDirtyFlag());
+    if (this.uiEvents) {
+      child.registerUIEvents(this.uiEvents);
+      this.uiEvents!.emit("setDirty", new UILayoutDirtyFlag());
+    }
   }
 
   updateLayout() {
